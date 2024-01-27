@@ -1,0 +1,16 @@
+Thumbs.db
+.DS_Store
+.gradle
+build/
+out/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+/grails-app/assets/scss/
+/grails-app/assets/org_images/
+/grails-app/assets/org_javascripts/
+/grails-app/assets/org_stylesheets/
