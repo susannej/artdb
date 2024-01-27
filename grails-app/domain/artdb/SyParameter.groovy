@@ -2,7 +2,7 @@ package artdb
 
 class SyParameter {
 
-    String key
+    String keyValue
     String value
 
     static mapping = {
