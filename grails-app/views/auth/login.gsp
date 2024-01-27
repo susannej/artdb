@@ -57,19 +57,21 @@
                 </div>
               </div>
               <div class="card-body">
-                <form role="form" class="text-start">
+                <g:form role="form" class="text-start" action="signIn">
+                  <input type="hidden" name="targetUri" value="${targetUri}"/>
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Email</label>
-                    <input type="email" class="form-control">
+                    <! -- input id="username" name="username" type="email" class="form-control" -->
+                    <input id="username" name="username" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" id="password" name="password" class="form-control">
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
-                </form>
+                </g:form>
               </div>
             </div>
           </div>
