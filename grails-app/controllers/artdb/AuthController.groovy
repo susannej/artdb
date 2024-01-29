@@ -39,10 +39,15 @@ class AuthController {
         }
         
         try{
+            def ignoreCaseTest = ShiroUser.findByUsername(params.username)
+            if (ignoreCaseTest == null || ignoreCaseTest.username != params.username /*|| ignoreCaseTest.active == false*/)
+                throw new AuthenticationException()
             // Perform the actual login. An AuthenticationException
             // will be thrown if the username is unrecognised or the
             // password is incorrect.
             SecurityUtils.subject.login(authToken)
+
+            session.user = ShiroUser.findByUsername(SecurityUtils.subject.principal.userName)
 
             log.info "Redirecting to ${targetUri}."
             redirect(uri: targetUri)

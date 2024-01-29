@@ -1,22 +1,49 @@
 package artdb
 
+import tools.YesNoType
+
 class Painting {
 
     int status = 0
-    String title
-    String creationTime
+
+    // Deutsch
+    String titleDe
+    String descriptionDe
+
+    // English
+    String titleEn
+    String descriptionEn
+
+    // Farsi
+    String titleFa
+    String descriptionFa
+
+    Date creationTime
+
     Place place
-    String description
     String owner
+    String ort
+
+    Category category
+    Material material
+    Technic technic
+
+    boolean web
+
+    int height
+    int width
+    int depth
 
     static mapping = {
         table name: 'paintings'
-        description type: 'text'
+        descriptionDe type: 'text'
+        descriptionEn type: 'text'
+        descriptionFa type: 'text'
+        web type: 'tools.YesNoType'
     }
 
     static constraints = {
 
     }
-
 
 }

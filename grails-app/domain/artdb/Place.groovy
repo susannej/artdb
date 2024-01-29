@@ -12,4 +12,8 @@ class Place {
 
     static constraints = {
     }
+
+    String toString() {
+        shortDesc
+    }
 }

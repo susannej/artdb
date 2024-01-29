@@ -38,16 +38,23 @@
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href=" https://github.com/susannej/ArtDB " target="_blank">
+        <asset:image src="ArtDB_logo.png" class="navbar-brand-img h-100" alt="main_logo" />
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <asset:image src="logo-ct.png" class="navbar-brand-img h-100" alt="main_logo" />
-        <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+        <asset:image src="userIcon100.png" class="navbar-brand-img h-100" alt="main_logo" />
+        <span class="ms-1 font-weight-bold text-white">${session.user.username}</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="/dashboard/index">
+          <a class="nav-link text-white ${(controllerName == 'dashboard') ? 'active bg-gradient-primary': ''}" href="/dashboard/index">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -55,23 +62,20 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/syParameter/index">
+          <a class="nav-link text-white ${(controllerName == 'painting') ? 'active bg-gradient-primary': ''}" href="/painting/index">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Parameter</span>
+            <span class="nav-link-text ms-1">Bilder</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="/shiroUser/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text ms-1">User</span>
-          </a>
+        <!-- Administration -->
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Administration</h6>
         </li>
+        <!-- Administration -->
         <li class="nav-item">
-          <a class="nav-link text-white " href="/place/index">
+          <a class="nav-link text-white ${(controllerName == 'place') ? 'active bg-gradient-primary': ''}" href="/place/index">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -79,21 +83,55 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/painting/index">
+          <a class="nav-link text-white ${(controllerName == 'category') ? 'active bg-gradient-primary': ''}" href="/category/index">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Bilder</span>
+            <span class="nav-link-text ms-1">Kategorie</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ${(controllerName == 'material') ? 'active bg-gradient-primary': ''}" href="/material/index">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Material</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ${(controllerName == 'technic') ? 'active bg-gradient-primary': ''}" href="/technic/index">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Technik</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ${(controllerName == 'syParameter') ? 'active bg-gradient-primary': ''}" href="/syParameter/index">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">Parameter</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ${(controllerName == 'shiroUser') ? 'active bg-gradient-primary': ''}" href="/shiroUser/index">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">User</span>
           </a>
         </li>
       </ul>
     </div>
+    <!--
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
         <a class="btn btn-outline-primary mt-4 w-100" href="" type="button">Bla</a>
         <a class="btn bg-gradient-primary w-100" href="" type="button">Blubber</a>
       </div>
     </div>
+     -->
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
@@ -101,24 +139,17 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Template</li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">${controllerName}</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">${actionName}</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Template</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-material-dashboard">Online Builder</a>
-            </li>
             <li class="mt-2">
-              <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+              <a class="github-button" href="https://github.com/susannej/ArtDB" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star susannej/ArtDB on GitHub">Star</a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -208,9 +239,9 @@
               </ul>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+              <a href="/auth/signOut" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Abmelden</span>
               </a>
             </li>
           </ul>
@@ -261,8 +292,7 @@
     <div class="card shadow-lg">
       <div class="card-header pb-0 pt-3">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-          <p>See our dashboard options.</p>
+          <h5 class="mt-3 mb-0">UI Configurator</h5>
         </div>
         <div class="float-end mt-4">
           <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -313,18 +343,6 @@
           </div>
         </div>
         <hr class="horizontal dark my-sm-4">
-        <a class="btn bg-gradient-info w-100" href="https://www.creative-tim.com/product/material-dashboard-pro">Free Download</a>
-        <a class="btn btn-outline-dark w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard">View documentation</a>
-        <div class="w-100 text-center">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
-          <h6 class="mt-3">Thank you for sharing!</h6>
-          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-          </a>
-        </div>
       </div>
     </div>
   </div>
