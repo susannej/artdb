@@ -8,16 +8,18 @@ class Category {
     String descriptionEn
     String descriptionFa
 
-    static constraints = {
+    static mapping = {
         table name: 'categories'
         descriptionDe type: 'text'
         descriptionEn type: 'text'
         descriptionFa type: 'text'
     }
 
-    /*
+    static constraints = {
+
+    }
+
     String toString() {
         shortDesc + " / " + shortDescFa
     }
-    */
 }

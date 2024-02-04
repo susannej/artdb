@@ -32,6 +32,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <asset:stylesheet id="pagestyle" src="material-dashboard.css" />
+  <asset:stylesheet src="jquery-ui.min.css" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -351,6 +352,8 @@
   <asset:javascript src="core/bootstrap.min.js" />
   <asset:javascript src="plugins/perfect-scrollbar.min.js" />
   <asset:javascript src="plugins/smooth-scrollbar.min.js" />
+  <asset:javascript src="jquery-3.7.1.min.js" />
+  <asset:javascript src="jquery-ui.min.js" />
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

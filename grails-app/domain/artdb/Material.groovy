@@ -8,11 +8,15 @@ class Material {
     String descriptionEn
     String descriptionFa
 
-    static constraints = {
+    static mapping = {
         table name: 'materials'
         descriptionDe type: 'text'
         descriptionEn type: 'text'
         descriptionFa type: 'text'
+    }
+
+    static constraints = {
+
     }
 
     String toString() {
