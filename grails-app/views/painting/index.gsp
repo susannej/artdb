@@ -24,6 +24,11 @@
        </div>
     </g:if>
 
+    <g:link class="btn btn-info" action="create">
+        <i class="fa fa-plus"></i>
+        <g:message code="default.new.label" args="[entityName]" />
+    </g:link>
+
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -40,46 +45,81 @@
                                 <tr>
                                     <th class="text-secondary opacity-7"></th>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">WEB</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Status</th>
                                     <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Titel</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Beschreibung</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Datum</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ort</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 ps-2">Beschreibung</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Datum</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Ort</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Kategorie</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Material</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Technik</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="align-middle text-center">
-                                       <a href="" class="text-center text-secondary font-weight-bold text-s"><i class="fa fa-edit"></i></a>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            <div>
-                                                <asset:image src="template_painting.jpeg" class="avatar avatar-m me-3 border-radius-lg" />
+                                    <g:each in="${paintIingList}" status="i" var="painting">
+                                        <tr>
+                                            <td class="align-middle text-center">
                                                 <!--
-                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                               <a href="" class="text-center text-secondary font-weight-bold text-s"><i class="fa fa-edit"></i></a>
                                                 -->
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center">
-                                                <h6 class="mb-0 text-sm">John Michael</h6>
-                                                <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                        <p class="text-xs text-secondary mb-0">Organization</p>
-                                    </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                                    </td>
-                                </tr>
+                                                <g:link action="edit" id="${painting.id}" class="text-center"><i class="fa fa-edit"></i></g:link>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <!--
+                                                <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
+                                                -->
+                                                <g:if test="${painting.web}">
+                                                    <span class="badge badge-sm bg-gradient-success">Online</span>
+                                                </g:if>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                            <!--
+                                                <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
+                                                -->
+                                                <g:if test="${painting.status > 0}">
+                                                    <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
+                                                </g:if>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <asset:image src="template_painting.jpeg" class="avatar avatar-m me-3 border-radius-lg" />
+                                                        <!--
+                                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        -->
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <!--
+                                                        <h6 class="mb-0 text-sm">John Michael</h6>
+                                                        -->
+                                                        <p class="text-xs text-secondary mb-0">${fieldValue(bean: painting, field: "titleDe")}</p>
+                                                        <p class="text-xs text-secondary mb-0">${fieldValue(bean: painting, field: "titleEn")}</p>
+                                                        <p class="text-xs text-secondary mb-0">${fieldValue(bean: painting, field: "titleFa")}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionDe").toString(), 35)}</p>
+                                                <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionEn").toString(), 35)}</p>
+                                                <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionFa").toString(), 35)}</p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold"><g:formatDate date="${painting.creationTime}" type="date" style="MEDIUM" /></span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "ort")}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "category")}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "material")}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "technic")}</span>
+                                            </td>
+                                        </tr>
+                                    </g:each>
                                 </tbody>
                             </table>
                         </div>
@@ -101,5 +141,10 @@
     </div>
 </div>
  -->
+
+<g:link class="btn btn-info" action="create">
+    <i class="fa fa-plus"></i>
+    <g:message code="default.new.label" args="[entityName]" />
+</g:link>
 </body>
 </html>
