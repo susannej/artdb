@@ -38,7 +38,8 @@ class PaintingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'painting.label', default: 'Painting'), painting.id])
-                redirect painting
+                //redirect painting
+                redirect action:"index", method:"GET"
             }
             '*' { respond painting, [status: CREATED] }
         }
@@ -64,7 +65,8 @@ class PaintingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'painting.label', default: 'Painting'), painting.id])
-                redirect painting
+                //redirect painting
+                redirect action:"index", method:"GET"
             }
             '*'{ respond painting, [status: OK] }
         }

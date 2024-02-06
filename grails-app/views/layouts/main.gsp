@@ -33,6 +33,7 @@
   <!-- CSS Files -->
   <asset:stylesheet id="pagestyle" src="material-dashboard.css" />
   <asset:stylesheet src="jquery-ui.min.css" />
+  <asset:stylesheet src="artdb.css" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">

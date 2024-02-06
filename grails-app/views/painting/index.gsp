@@ -35,7 +35,17 @@
                 <div class="card my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                            <h6 class="text-white text-capitalize ps-3"><g:message code="default.list.label" args="[entityName]" /></h6>
+                            <table border="0">
+                                <tr>
+                                    <td>
+                                        <h6 class="text-white text-capitalize ps-3"><nobr><g:message code="default.list.label" args="[entityName]" /></nobr></h6>
+                                    </td>
+                                    <td width="100%"></td>
+                                    <td>
+                                        <nobr><g:select name="max" class="" from="${(1..10)*.multiply(10)}" value="${max}" onChange="doFilterFormSubmitCheck();" />&nbsp;&nbsp;&nbsp;</nobr>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
@@ -43,7 +53,9 @@
                             <table class="table align-items-center mb-0" >
                                 <thead>
                                 <tr>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <shiro:hasPermission permission="painting:edit">
+                                        <th class="text-secondary opacity-7"></th>
+                                    </shiro:hasPermission>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">WEB</th>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Status</th>
                                     <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Titel</th>
@@ -55,16 +67,18 @@
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Technik</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    <g:each in="${paintIingList}" status="i" var="painting">
+                                <tbody class="indexTable">
+                                    <g:each in="${paintingList}" status="i" var="painting">
                                         <tr>
-                                            <td class="align-middle text-center">
-                                                <!--
-                                               <a href="" class="text-center text-secondary font-weight-bold text-s"><i class="fa fa-edit"></i></a>
-                                                -->
-                                                <g:link action="edit" id="${painting.id}" class="text-center"><i class="fa fa-edit"></i></g:link>
-                                            </td>
-                                            <td class="align-middle text-center">
+                                            <shiro:hasPermission permission="painting:edit">
+                                                <td class="align-middle text-center">
+                                                    <!--
+                                                   <a href="" class="text-center text-secondary font-weight-bold text-s"><i class="fa fa-edit"></i></a>
+                                                    -->
+                                                    <g:link action="edit" id="${painting.id}" class="text-center"><i class="fa fa-edit"></i></g:link>
+                                                </td>
+                                            </shiro:hasPermission>
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <!--
                                                 <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
                                                 -->
@@ -72,7 +86,7 @@
                                                     <span class="badge badge-sm bg-gradient-success">Online</span>
                                                 </g:if>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                             <!--
                                                 <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
                                                 -->
@@ -80,7 +94,7 @@
                                                     <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
                                                 </g:if>
                                             </td>
-                                            <td>
+                                            <td onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
                                                         <asset:image src="template_painting.jpeg" class="avatar avatar-m me-3 border-radius-lg" />
@@ -98,24 +112,24 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionDe").toString(), 35)}</p>
                                                 <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionEn").toString(), 35)}</p>
                                                 <p class="text-xs text-secondary mb-0">${tools.Tools.shortenTo(fieldValue(bean: painting, field: "descriptionFa").toString(), 35)}</p>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <span class="text-secondary text-xs font-weight-bold"><g:formatDate date="${painting.creationTime}" type="date" style="MEDIUM" /></span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "ort")}</span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "category")}</span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "material")}</span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center" onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <span class="text-secondary text-xs font-weight-bold">${fieldValue(bean: painting, field: "technic")}</span>
                                             </td>
                                         </tr>
@@ -125,17 +139,17 @@
                         </div>
                     </div>
                 </div>
+                <g:if test="${paintingCount > params.int('max')}">
+                    <div class="pagination">
+                        <g:paginate total="${paintingCount ?: 0}" />
+                    </div>
+                </g:if>
             </div>
         </div>
     </div>
 </div>
 
 <!--
-                <g:if test="${paintingCount > params.int('max')}">
-                    <div class="pagination">
-                        <g:paginate total="${paintingCount ?: 0}" />
-                    </div>
-                </g:if>
             </div>
         </section>
     </div>
