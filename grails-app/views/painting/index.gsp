@@ -38,11 +38,11 @@
                             <table border="0">
                                 <tr>
                                     <td>
-                                        <h6 class="text-white text-capitalize ps-3"><nobr><g:message code="default.list.label" args="[entityName]" /></nobr></h6>
+                                        <h6 class="text-white text-capitalize px-3"><nobr><g:message code="default.list.label" args="[entityName]" /></nobr></h6>
                                     </td>
                                     <td width="100%"></td>
                                     <td>
-                                        <nobr><g:select name="max" class="" from="${(1..10)*.multiply(10)}" value="${max}" onChange="doFilterFormSubmitCheck();" />&nbsp;&nbsp;&nbsp;</nobr>
+                                        <nobr><g:select name="max" class="px-3 mx-3" from="${(1..10)*.multiply(10)}" value="${max}" onChange="doFilterFormSubmitCheck();" /></nobr>
                                     </td>
                                 </tr>
                             </table>
@@ -58,8 +58,14 @@
                                     </shiro:hasPermission>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">WEB</th>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Status</th>
+                                    <!--
                                     <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Titel</th>
+                                    -->
+                                    <g:sortableColumn property="titleDe" title="${message(code: 'painting.title.label', default: 'Titel')}" class="text-uppercase text-secondary text-s font-weight-bolder opacity-7"/>
+                                    <!--
                                     <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 ps-2">Beschreibung</th>
+                                    -->
+                                    <g:sortableColumn property="descriptionDe" title="${message(code: 'painting.desc.label', default: 'Beschreibung')}" class="text-uppercase text-secondary text-s font-weight-bolder opacity-7"/>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Datum</th>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Ort</th>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Kategorie</th>
@@ -97,7 +103,7 @@
                                             <td onclick="window.document.location='${request.contextPath}/${controllerName}/show/${painting.id}'">
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <asset:image src="template_painting.jpeg" class="avatar avatar-m me-3 border-radius-lg" />
+                                                        <asset:image src="template_painting.jpeg" class="avatar avatar-m mx-3 border-radius-lg" />
                                                         <!--
                                                         <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                                                         -->

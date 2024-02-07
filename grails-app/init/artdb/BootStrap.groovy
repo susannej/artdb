@@ -7,6 +7,7 @@ class BootStrap {
     PasswordService credentialMatcher
 
     def init = { servletContext ->
+        //ParserRegistry.setDefaultCharset("UTF-8")
         ShiroRole.withTransaction {
             def existingUser = ShiroUser.findByUsername("admin")
             if (!existingUser) {

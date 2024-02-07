@@ -42,6 +42,25 @@
     </div>
   </div>
   <main class="main-content  mt-0">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
+      <div class="container-fluid py-1 px-3">
+    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+      <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+      </div>
+      <ul class="navbar-nav  justify-content-end">
+        <li class="nav-item dropdown px-2 d-flex align-items-center">
+          <button class="btn btn-light dropdown-toggle btn-sm mb-0 mx-3 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <g:message code="language.label" />
+          </button>
+          <ul class="dropdown-menu px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton1">
+            <locale:localeDropdownListItems uri="${request.forwardURI}"/>
+          </ul>
+        </li>
+      </ul>
+    </div>
+      </div>
+    </nav>
+
     <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
       <span class="mask bg-gradient-dark opacity-6"></span>
       <div class="container my-auto">

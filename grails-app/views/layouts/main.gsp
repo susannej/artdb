@@ -13,10 +13,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" <g:if test="${org.springframework.context.i18n.LocaleContextHolder.locale.language == 'fa'}">dir="rtl"</g:if> >
 
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
     <g:layoutTitle default="Grails"/>
@@ -36,10 +37,10 @@
   <asset:stylesheet src="artdb.css" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-200">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+  <body class="g-sidenav-show  bg-gray-200 ${org.springframework.context.i18n.LocaleContextHolder.locale.language == 'fa' ? 'rtl' : ''}">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 ${org.springframework.context.i18n.LocaleContextHolder.locale.language == 'fa' ? 'fixed-end' : 'fixed-start'} ms-3 bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute ${org.springframework.context.i18n.LocaleContextHolder.locale.language == 'fa' ? 'start-0' : 'end-0'} top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://github.com/susannej/ArtDB " target="_blank">
         <asset:image src="ArtDB_logo.png" class="navbar-brand-img h-100" alt="main_logo" />
       </a>
@@ -49,7 +50,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
         <asset:image src="userIcon100.png" class="navbar-brand-img h-100" alt="main_logo" />
-        <span class="ms-1 font-weight-bold text-white">${session.user.username}</span>
+        <span class="mx-1 font-weight-bold text-white">${session.user.username}</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -57,71 +58,73 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'dashboard') ? 'active bg-gradient-primary': ''}" href="/dashboard/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text mx-1"><g:message code="dashboard.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'painting') ? 'active bg-gradient-primary': ''}" href="/painting/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Bilder</span>
+            <span class="nav-link-text mx-1"><g:message code="paintings.label" /></span>
           </a>
         </li>
         <!-- Administration -->
         <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Administration</h6>
+        <div class="text-white text-center d-flex align-items-center justify-content-center">
+          <h6 class="px-2 mx-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"><g:message code="administration.label" /></h6>
+        </div>
         </li>
         <!-- Administration -->
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'place') ? 'active bg-gradient-primary': ''}" href="/place/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Ablageorte</span>
+            <span class="nav-link-text mx-1"><g:message code="places.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'category') ? 'active bg-gradient-primary': ''}" href="/category/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Kategorie</span>
+            <span class="nav-link-text mx-1"><g:message code="categories.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'material') ? 'active bg-gradient-primary': ''}" href="/material/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Material</span>
+            <span class="nav-link-text mx-1"><g:message code="materials.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'technic') ? 'active bg-gradient-primary': ''}" href="/technic/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Technik</span>
+            <span class="nav-link-text mx-1"><g:message code="technics.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'syParameter') ? 'active bg-gradient-primary': ''}" href="/syParameter/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Parameter</span>
+            <span class="nav-link-text mx-1"><g:message code="parameter.label" /></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white ${(controllerName == 'shiroUser') ? 'active bg-gradient-primary': ''}" href="/shiroUser/index">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">User</span>
+            <span class="nav-link-text mx-1"><g:message code="user.label" /></span>
           </a>
         </li>
       </ul>
@@ -140,7 +143,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 mx-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">${controllerName}</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">${actionName}</li>
           </ol>
@@ -152,10 +155,18 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item dropdown px-2 d-flex align-items-center">
+              <button class="btn btn-light dropdown-toggle btn-sm mb-0 mx-3 " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <g:message code="language.label" />
+              </button>
+              <ul class="dropdown-menu px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton1">
+                <locale:localeDropdownListItems uri="${request.forwardURI}"/>
+              </ul>
+            </li>
             <li class="mt-2">
               <a class="github-button" href="https://github.com/susannej/ArtDB" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star susannej/ArtDB on GitHub">Star</a>
             </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <li class="nav-item d-xl-none px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
                   <i class="sidenav-toggler-line"></i>
@@ -169,7 +180,7 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
             </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <li class="nav-item dropdown px-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell cursor-pointer"></i>
               </a>
@@ -178,7 +189,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                        <asset:image src="team-2.jpg" class="avatar avatar-sm  me-3 " />
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -196,7 +207,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                        <asset:image src="small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 " />
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -245,7 +256,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="/auth/signOut" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Abmelden</span>
+                <span class="d-sm-inline d-none"><g:message code="signOut.label" /></span>
               </a>
             </li>
           </ul>
@@ -260,10 +271,8 @@
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
               <div class="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
+                © 2024 by Susanne Jäckel,
+                Template made with <i class="fa fa-heart" aria-hidden="true"></i> by
                 <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
                 for a better web.
               </div>
