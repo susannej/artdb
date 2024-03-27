@@ -16,6 +16,11 @@ class Technic {
     }
 
     static constraints = {
+        shortDesc nullable: true
+        shortDescFa nullable: true
+        descriptionDe nullable: true
+        descriptionEn nullable: true
+        descriptionFa nullable: true
     }
 
     String toString() {

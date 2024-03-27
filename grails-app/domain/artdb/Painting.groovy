@@ -43,7 +43,22 @@ class Painting {
     }
 
     static constraints = {
-
+        titleDe nullable: true
+        descriptionDe nullable: true
+        titleEn nullable: true
+        descriptionEn nullable: true
+        titleFa nullable: true
+        descriptionFa nullable: true
+        creationTime nullable: true
+        place nullable: true
+        owner nullable: true
+        ort nullable: true
+        category nullable: true
+        material nullable: true
+        technic nullable: true
+        height nullable: true
+        width nullable: true
+        depth nullable: true
     }
 
 }

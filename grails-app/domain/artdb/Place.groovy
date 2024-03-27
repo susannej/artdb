@@ -11,6 +11,8 @@ class Place {
     }
 
     static constraints = {
+        shortDesc nullable: true
+        description nullable: true
     }
 
     String toString() {
