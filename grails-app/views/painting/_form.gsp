@@ -256,14 +256,14 @@
         <div class="col-2">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:select id="category" name='category.id' value="${category?.id}"
+                    <g:select id="category" name='category.id' value="${painting?.category?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Category.list()}'
                               optionKey="id" disabled="true" />
                 </g:if>
                 <g:else>
                     <g:select id="category" name='category.id' class="form-select input-group input-group-outline"
-                              value="${category?.id}"
+                              value="${painting?.category?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Category.list()}'
                               optionKey="id" />
@@ -281,14 +281,14 @@
         <div class="col-2">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:select id="material" name='material.id' value="${material?.id}"
+                    <g:select id="material" name='material.id' value="${painting?.material?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Material.list()}'
                               optionKey="id" disabled="true" />
                 </g:if>
                 <g:else>
                     <g:select id="material" name='material.id' class="form-select input-group input-group-outline"
-                              value="${material?.id}"
+                              value="${painting?.material?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Material.list()}'
                               optionKey="id" />
@@ -306,14 +306,14 @@
         <div class="col-2">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:select id="technic" name='technic.id' value="${technic?.id}"
+                    <g:select id="technic" name='technic.id' value="${painting?.technic?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Technic.list()}'
                               optionKey="id" disabled="true" />
                 </g:if>
                 <g:else>
                     <g:select id="technic" name='technic.id' class="form-select input-group input-group-outline"
-                              value="${technic?.id}"
+                              value="${painting?.technic?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Technic.list()}'
                               optionKey="id" />
@@ -333,14 +333,14 @@
         <div class="col-2">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:select id="place" name='place.id' value="${place?.id}"
+                    <g:select id="place" name='place.id' value="${painting?.place?.id}"
                               noSelection="${['null':'Select One...']}"
                               from='${Place.list()}'
                               optionKey="id" optionValue="shortDesc" disabled="true" />
                 </g:if>
                 <g:else>
                     <g:select id="place" name='place.id' class="form-select input-group input-group-outline"
-                        value="${place?.id}"
+                        value="${painting?.place?.id}"
                         noSelection="${['null':'Select One...']}"
                         from='${Place.list()}'
                         optionKey="id" optionValue="shortDesc" />
