@@ -38,7 +38,7 @@ class SyParameterController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'syParameter.label', default: 'SyParameter'), syParameter.id])
-                redirect syParameter
+                redirect action:"index", method:"GET"
             }
             '*' { respond syParameter, [status: CREATED] }
         }
@@ -64,7 +64,7 @@ class SyParameterController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'syParameter.label', default: 'SyParameter'), syParameter.id])
-                redirect syParameter
+                redirect action:"index", method:"GET"
             }
             '*'{ respond syParameter, [status: OK] }
         }
