@@ -15,10 +15,14 @@ class JQueryDatePickerTagLib {
 
         //def displayFormatString = displayFormat ? displayFormat : "MM.dd.yyyy"
         def datepickerFormatString = datepickerFormat ? datepickerFormat : "dd.mm.yy"
-        def dateString = value ? value.format("dd.MM.yyyy") : ""
-        def dayString = value ? value.format('dd') : ""
-        def monthString = value ? value.format('MM') : ""
-        def yearString = value ? value.format('yyyy') : ""
+        //def dateString = value ? value.format("dd.MM.yyyy") : ""
+        //def dayString = value ? value.format('dd') : ""
+        //def monthString = value ? value.format('MM') : ""
+        //def yearString = value ? value.format('yyyy') : ""
+        def dateString = value ? (new java.text.SimpleDateFormat('dd.MM.yyyy')).format(value) : ""
+        def dayString = value ? (new java.text.SimpleDateFormat('dd')).format(value) : ""
+        def monthString = value ? (new java.text.SimpleDateFormat('MM')).format(value) : ""
+        def yearString = value ? (new java.text.SimpleDateFormat('yyyy')).format(value) : ""
 
         //Create date text field and supporting hidden text fields need by grails
         out.println "<input type=\"text\" name=\"${name}_dp\" id=\"${id}_dp\" value=\"${dateString}\"  autocomplete=\"off\" "

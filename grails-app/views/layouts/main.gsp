@@ -264,8 +264,8 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <g:layoutBody/>
     <div class="container-fluid py-4">
+      <g:layoutBody/>
       <footer class="footer py-4  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -374,11 +374,39 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
+    $(".datepicker").datepicker();
+    $.datepicker.setDefaults({
+      firstDay: 1,
+      dateFormat: 'dd.mm.yy'
+    });
+    //$.datepicker.setDefaults( $.datepicker.regional[ "de" ] );
+    //$('#ui-datepicker-div').css('clip', 'auto');
+
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <asset:javascript src="material-dashboard.min.js" />
-</body>
+  <style type="text/css">
+  #ui-datepicker-div {
+    z-index: 9999999 !important;
+  }
+  .dropdown-menu > li > .btn-link {
+    display: block;
+    border-style: none;
+    padding: 3px 20px;
+    background: white;
+    color: #333;
+    clear: both;
+    text-decoration: none;
+  }
+  .dropdown-menu > li > .btn-link:hover {
+    background: #3276B1;
+    color: white;
+  }
+  </style>
+
+  </body>
 
 </html>
