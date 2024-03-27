@@ -38,7 +38,7 @@ class TechnicController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'technic.label', default: 'Technic'), technic.id])
-                redirect technic
+                redirect action:"index", method:"GET"
             }
             '*' { respond technic, [status: CREATED] }
         }
@@ -64,7 +64,7 @@ class TechnicController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'technic.label', default: 'Technic'), technic.id])
-                redirect technic
+                redirect action:"index", method:"GET"
             }
             '*'{ respond technic, [status: OK] }
         }

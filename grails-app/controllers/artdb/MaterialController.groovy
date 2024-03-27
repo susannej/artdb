@@ -38,7 +38,7 @@ class MaterialController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'material.label', default: 'Material'), material.id])
-                redirect material
+                redirect action:"index", method:"GET"
             }
             '*' { respond material, [status: CREATED] }
         }
@@ -64,7 +64,7 @@ class MaterialController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'material.label', default: 'Material'), material.id])
-                redirect material
+                redirect action:"index", method:"GET"
             }
             '*'{ respond material, [status: OK] }
         }

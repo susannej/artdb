@@ -38,7 +38,7 @@ class CategoryController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'category.label', default: 'Category'), category.id])
-                redirect category
+                redirect action:"index", method:"GET"
             }
             '*' { respond category, [status: CREATED] }
         }
@@ -64,7 +64,7 @@ class CategoryController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'category.label', default: 'Category'), category.id])
-                redirect category
+                redirect action:"index", method:"GET"
             }
             '*'{ respond category, [status: OK] }
         }

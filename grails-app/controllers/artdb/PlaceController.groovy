@@ -38,7 +38,7 @@ class PlaceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'place.label', default: 'Place'), place.id])
-                redirect place
+                redirect action:"index", method:"GET"
             }
             '*' { respond place, [status: CREATED] }
         }
@@ -64,7 +64,7 @@ class PlaceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'place.label', default: 'Place'), place.id])
-                redirect place
+                redirect action:"index", method:"GET"
             }
             '*'{ respond place, [status: OK] }
         }
