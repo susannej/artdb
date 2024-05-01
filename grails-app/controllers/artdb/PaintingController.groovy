@@ -28,6 +28,9 @@ class PaintingController {
             return
         }
 
+        painting.acqCompl = params.acqCompl == 'on'? true : false
+        painting.web = params.web == 'on'? true : false
+
         try {
             paintingService.save(painting)
         } catch (ValidationException e) {
@@ -54,6 +57,9 @@ class PaintingController {
             notFound()
             return
         }
+
+        painting.acqCompl = params.acqCompl == 'on'? true : false
+        painting.web = params.web == 'on'? true : false
 
         try {
             paintingService.save(painting)

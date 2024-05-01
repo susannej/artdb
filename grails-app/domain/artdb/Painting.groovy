@@ -4,7 +4,7 @@ import tools.YesNoType
 
 class Painting {
 
-    int status = 0
+    boolean acqCompl = false
 
     // Deutsch
     String titleDe
@@ -36,6 +36,7 @@ class Painting {
 
     static mapping = {
         table name: 'paintings'
+        acqCompl type: 'tools.YesNoType'
         descriptionDe type: 'text'
         descriptionEn type: 'text'
         descriptionFa type: 'text'

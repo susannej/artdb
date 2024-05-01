@@ -16,7 +16,7 @@
 <body>
 <div id="content" role="main">
     <g:if test="${flash.message}">
-       <div class="alert alert-success alert-dismissible text-white" role="alert">
+       <div class="alert alert-info alert-dismissible text-white" role="alert">
            <span class="text-sm">${flash.message}</span>
            <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                <span aria-hidden="true">×</span>
@@ -24,10 +24,12 @@
        </div>
     </g:if>
 
-    <g:link class="btn btn-info" action="create">
-        <i class="fa fa-plus"></i>
-        <g:message code="default.new.label" args="[entityName]" />
-    </g:link>
+    <shiro:hasPermission permission="painting:create">
+        <g:link class="btn btn-info" action="create">
+            <i class="fa fa-plus"></i>
+            <g:message code="default.new.label" args="[entityName]" />
+        </g:link>
+    </shiro:hasPermission>
 
     <div class="container-fluid py-4">
         <div class="row">
@@ -57,7 +59,7 @@
                                         <th class="text-secondary opacity-7"></th>
                                     </shiro:hasPermission>
                                     <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">WEB</th>
-                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Status</th>
+                                    <th class="text-center text-uppercase text-secondary text-s font-weight-bolder opacity-7">Erfasst</th>
                                     <!--
                                     <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7">Titel</th>
                                     -->
@@ -96,7 +98,7 @@
                                             <!--
                                                 <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
                                                 -->
-                                                <g:if test="${painting.status > 0}">
+                                                <g:if test="${painting.acqCompl}">
                                                     <i class="fa fa-check text-info text-center" aria-hidden="true"></i>
                                                 </g:if>
                                             </td>
@@ -155,16 +157,11 @@
     </div>
 </div>
 
-<!--
-            </div>
-        </section>
-    </div>
-</div>
- -->
-
-<g:link class="btn btn-info" action="create">
-    <i class="fa fa-plus"></i>
-    <g:message code="default.new.label" args="[entityName]" />
-</g:link>
+<shiro:hasPermission permission="painting:create">
+    <g:link class="btn btn-info" action="create">
+        <i class="fa fa-plus"></i>
+        <g:message code="default.new.label" args="[entityName]" />
+    </g:link>
+</shiro:hasPermission>
 </body>
 </html>

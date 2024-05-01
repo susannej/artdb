@@ -7,7 +7,7 @@
 </head>
 <body>
 <g:if test="${flash.message}">
-    <div class="alert alert-primary alert-dismissible text-white" role="alert">
+    <div class="alert alert-info alert-dismissible text-white" role="alert">
         <span class="text-sm">${flash.message}</span>
         <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">×</span>
@@ -16,7 +16,7 @@
 </g:if>
 <g:hasErrors bean="${this.technic}">
     <g:eachError bean="${this.technic}" var="error">
-        <div class="alert alert-primary alert-dismissible text-white" role="alert">
+        <div class="alert alert-info alert-dismissible text-white" role="alert">
             <span class="text-sm"><g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></span>
             <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>

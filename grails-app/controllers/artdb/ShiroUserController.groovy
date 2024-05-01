@@ -1,11 +1,14 @@
 package artdb
 
 import grails.validation.ValidationException
+import org.apache.shiro.authc.credential.PasswordService
+
 import static org.springframework.http.HttpStatus.*
 
 class ShiroUserController {
 
     ShiroUserService shiroUserService
+    PasswordService credentialMatcher
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -28,6 +31,10 @@ class ShiroUserController {
             return
         }
 
+        if (params.password.size() > 0) {
+            shiroUser.passwordHash = credentialMatcher.encryptPassword(params.password)
+        }
+
         try {
             shiroUserService.save(shiroUser)
         } catch (ValidationException e) {
@@ -38,7 +45,8 @@ class ShiroUserController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'shiroUser.label', default: 'ShiroUser'), shiroUser.id])
-                redirect shiroUser
+                redirect action:"index", method:"GET"
+                //redirect shiroUser
             }
             '*' { respond shiroUser, [status: CREATED] }
         }
@@ -64,7 +72,8 @@ class ShiroUserController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'shiroUser.label', default: 'ShiroUser'), shiroUser.id])
-                redirect shiroUser
+                redirect action:"index", method:"GET"
+                //redirect shiroUser
             }
             '*'{ respond shiroUser, [status: OK] }
         }

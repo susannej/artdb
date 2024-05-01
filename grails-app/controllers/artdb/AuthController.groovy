@@ -29,7 +29,9 @@ class AuthController {
         
         // If a controller redirected to this page, redirect back
         // to it. Otherwise redirect to the root URI.
-        def targetUri = params.targetUri ?: "/"
+        def targetUri = params.targetUri ?: "/dashboard/index"
+        if (targetUri == "/")
+            targetUri = "/dashboard/index"
         
         // Handle requests saved by Shiro filters.
         SavedRequest savedRequest = WebUtils.getSavedRequest(request)
@@ -40,7 +42,7 @@ class AuthController {
         
         try{
             def ignoreCaseTest = ShiroUser.findByUsername(params.username)
-            if (ignoreCaseTest == null || ignoreCaseTest.username != params.username /*|| ignoreCaseTest.active == false*/)
+            if (ignoreCaseTest == null || ignoreCaseTest.username != params.username || ignoreCaseTest.active == false)
                 throw new AuthenticationException()
             // Perform the actual login. An AuthenticationException
             // will be thrown if the username is unrecognised or the

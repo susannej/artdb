@@ -50,7 +50,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
         <asset:image src="userIcon100.png" class="navbar-brand-img h-100" alt="main_logo" />
-        <span class="mx-1 font-weight-bold text-white">${session.user.username}</span>
+        <span class="mx-1 font-weight-bold text-white">${session?.user?.username}</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -72,61 +72,75 @@
             <span class="nav-link-text mx-1"><g:message code="paintings.label" /></span>
           </a>
         </li>
-        <!-- Administration -->
-        <li class="nav-item mt-3">
-        <div class="text-white text-center d-flex align-items-center justify-content-center">
-          <h6 class="px-2 mx-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"><g:message code="administration.label" /></h6>
-        </div>
-        </li>
-        <!-- Administration -->
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'place') ? 'active bg-gradient-primary': ''}" href="/place/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="places.label" /></span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'category') ? 'active bg-gradient-primary': ''}" href="/category/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="categories.label" /></span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'material') ? 'active bg-gradient-primary': ''}" href="/material/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="materials.label" /></span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'technic') ? 'active bg-gradient-primary': ''}" href="/technic/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="technics.label" /></span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'syParameter') ? 'active bg-gradient-primary': ''}" href="/syParameter/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="parameter.label" /></span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white ${(controllerName == 'shiroUser') ? 'active bg-gradient-primary': ''}" href="/shiroUser/index">
-            <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">dashboard</i>
-            </div>
-            <span class="nav-link-text mx-1"><g:message code="user.label" /></span>
-          </a>
-        </li>
+        <shiro:hasAnyRole in="['Admin', 'User']">
+          <!-- Administration -->
+          <li class="nav-item mt-3">
+          <div class="text-white text-center d-flex align-items-center justify-content-center">
+            <h6 class="px-2 mx-2 text-uppercase text-xs text-white font-weight-bolder opacity-8"><g:message code="administration.label" /></h6>
+          </div>
+          </li>
+          <!-- Administration -->
+          <shiro:hasPermission permission="place:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'place') ? 'active bg-gradient-primary': ''}" href="/place/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="places.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+          <shiro:hasPermission permission="category:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'category') ? 'active bg-gradient-primary': ''}" href="/category/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="categories.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+          <shiro:hasPermission permission="material:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'material') ? 'active bg-gradient-primary': ''}" href="/material/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="materials.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+          <shiro:hasPermission permission="technic:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'technic') ? 'active bg-gradient-primary': ''}" href="/technic/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="technics.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+          <shiro:hasPermission permission="syParameter:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'syParameter') ? 'active bg-gradient-primary': ''}" href="/syParameter/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="parameter.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+          <shiro:hasPermission permission="shiroUser:index">
+            <li class="nav-item">
+              <a class="nav-link text-white ${(controllerName == 'shiroUser') ? 'active bg-gradient-primary': ''}" href="/shiroUser/index">
+                <div class="text-white text-center mx-2 d-flex align-items-center justify-content-center">
+                  <i class="material-icons opacity-10">dashboard</i>
+                </div>
+                <span class="nav-link-text mx-1"><g:message code="user.label" /></span>
+              </a>
+            </li>
+          </shiro:hasPermission>
+        </shiro:hasAnyRole>
       </ul>
     </div>
     <!--

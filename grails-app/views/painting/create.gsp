@@ -7,7 +7,7 @@
     </head>
     <body>
     <g:if test="${flash.message}">
-        <div class="alert alert-primary alert-dismissible text-white" role="alert">
+        <div class="alert alert-info alert-dismissible text-white" role="alert">
             <span class="text-sm">${flash.message}</span>
             <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
@@ -16,7 +16,7 @@
     </g:if>
     <g:hasErrors bean="${this.painting}">
         <g:eachError bean="${this.painting}" var="error">
-            <div class="alert alert-primary alert-dismissible text-white" role="alert">
+            <div class="alert alert-info alert-dismissible text-white" role="alert">
                 <span class="text-sm"><g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></span>
                 <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -42,13 +42,13 @@
                                 <div class="card card-body card-plain border-radius-lg d-flex align-items-center flex-row">
                                 -->
                                 <div class="card card-body card-plain border-radius-lg align-items-lg-start col-12 ">
-                                    <g:form resource="${this.painting}" method="POST" class="col-12">
+                                    <g:uploadForm resource="${this.painting}" method="POST" class="col-12">
                                         <g:render template="form"/>
                                         <fieldset class="buttons">
                                             <g:link class="btn btn-outline-secondary" action="index" resource="${this.painting}"><g:message code="default.button.cancel.label" default="Abbruch" /></g:link>
                                             <g:submitButton name="create" class="btn btn-info save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                                         </fieldset>
-                                    </g:form>
+                                    </g:uploadForm>
                                 </div>
                             </div>
                         </div>

@@ -4,14 +4,48 @@
 <%@ page import="artdb.Material" %>
 <%@ page import="artdb.Technic" %>
 
-<div class="form-check form-switch ps-0">
-    <input class="form-check-input ms-auto" type="checkbox" id="status" ${(painting?.status > 0)? 'checked' : ''} ${(actionName == 'show')? 'disabled' : ''}>
-    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault"><g:message code="painting.status.label" default="Erfassung beendet" /></label>
-</div>
-<div class="form-check form-switch ps-0">
-    <input class="form-check-input ms-auto" type="checkbox" id="web" ${painting?.web? 'checked' : ''} ${(actionName == 'show')? 'disabled' : ''}>
-    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault"><g:message code="painting.web.label" default="Auf WEB-Seite veröffentlichen" /></label>
-</div>
+<table style="border: 0px; width: 100%">
+    <tr>
+        <td style="width: 33%;">
+            <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-auto" type="checkbox" id="acqCompl" name="acqCompl" ${painting?.acqCompl? 'checked' : ''} ${(actionName == 'show')? 'disabled' : ''}>
+                <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault"><g:message code="painting.status.label" default="Erfassung beendet" /></label>
+            </div>
+        </td>
+        <td rowspan="2" style="width: 33%;">
+            <label>bla blub</label>
+        </td>
+        <td>
+            <g:if test="${actionName != 'show'}">
+                <label class="form-label col-6" ><nobr>RAW-Bilddatei</nobr></label>
+            </g:if>
+        </td>
+        <td>
+            <g:if test="${actionName != 'show'}">
+                <input type="file" id="rawFile" name="rawFile" class="btn btn-outline-secondary col-6"/>
+            </g:if>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 33%;">
+            <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-auto" type="checkbox" id="web" name="web" ${painting?.web? 'checked' : ''} ${(actionName == 'show')? 'disabled' : ''}>
+                <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault"><g:message code="painting.web.label" default="Auf WEB-Seite veröffentlichen" /></label>
+            </div>
+        </td>
+        <td>
+            <g:if test="${actionName != 'show'}">
+                <label class="form-label col-6" ><nobr>JPEG-Bilddatei</nobr></label>
+            </g:if>
+        </td>
+        <td>
+            <g:if test="${actionName != 'show'}">
+                <input type="file" id="jpegFile" name="jpegFile" class="btn btn-outline-secondary col-6"/>
+            </g:if>
+        </td>
+    </tr>
+</table>
+
 <br>
 
 <!-- ------------------------------------------------------------------
@@ -37,10 +71,10 @@
                 <div class="col-8">
                     <div class="input-group input-group-outline mb-1">
                         <g:if test="${actionName == 'show'}">
-                            <g:textField class="form-control" id="titleDe" name="titleDe" value="${painting?.titleDe}" required="" disabled="true" />
+                            <g:textField class="form-control" id="titleDe" name="titleDe" value="${painting?.titleDe}"  disabled="true" />
                         </g:if>
                         <g:else>
-                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleDe', 'text-danger')}" id="titleDe" name="titleDe" value="${painting?.titleDe}" required=""  />
+                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleDe', 'text-danger')}" id="titleDe" name="titleDe" value="${painting?.titleDe}"   />
                         </g:else>
                     </div>
                 </div>
@@ -57,7 +91,7 @@
                             <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionDe', 'text-danger')}" id="descriptionDe" name="descriptionDe" rows="7" disabled>${painting?.descriptionDe}</textarea>
                         </g:if>
                         <g:else>
-                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionDe', 'text-danger')}" id="descriptionDe" name="descriptionDe" rows="7" required="">${painting?.descriptionDe}</textarea>
+                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionDe', 'text-danger')}" id="descriptionDe" name="descriptionDe" rows="7" >${painting?.descriptionDe}</textarea>
                         </g:else>
                     </div>
                 </div>
@@ -75,10 +109,10 @@
                 <div class="col-8">
                     <div class="input-group input-group-outline mb-1">
                         <g:if test="${actionName == 'show'}">
-                            <g:textField class="form-control" id="titleEn" name="titleEn" value="${painting?.titleEn}" required="" disabled="true" />
+                            <g:textField class="form-control" id="titleEn" name="titleEn" value="${painting?.titleEn}"  disabled="true" />
                         </g:if>
                         <g:else>
-                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleEn', 'text-danger')}" id="titleEn" name="titleEn" value="${painting?.titleEn}" required=""  />
+                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleEn', 'text-danger')}" id="titleEn" name="titleEn" value="${painting?.titleEn}"   />
                         </g:else>
                     </div>
                 </div>
@@ -95,7 +129,7 @@
                             <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionEn', 'text-danger')}" id="descriptionEn" name="descriptionEn" rows="7" disabled>${painting?.descriptionEn}</textarea>
                         </g:if>
                         <g:else>
-                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionEn', 'text-danger')}" id="descriptionEn" name="descriptionEn" rows="7" required="">${painting?.descriptionEn}</textarea>
+                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionEn', 'text-danger')}" id="descriptionEn" name="descriptionEn" rows="7" >${painting?.descriptionEn}</textarea>
                         </g:else>
                     </div>
                 </div>
@@ -113,10 +147,10 @@
                 <div class="col-8">
                     <div class="input-group input-group-outline mb-1">
                         <g:if test="${actionName == 'show'}">
-                            <g:textField class="form-control" id="titleFa" name="titleFa" value="${painting?.titleFa}" required="" disabled="true" />
+                            <g:textField class="form-control" id="titleFa" name="titleFa" value="${painting?.titleFa}"  disabled="true" />
                         </g:if>
                         <g:else>
-                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleFa', 'text-danger')}" id="titleFa" name="titleFa" value="${painting?.titleFa}" required=""  />
+                            <g:textField class="form-control ${hasErrors(bean: painting, field: 'titleFa', 'text-danger')}" id="titleFa" name="titleFa" value="${painting?.titleFa}"   />
                         </g:else>
                     </div>
                 </div>
@@ -133,7 +167,7 @@
                             <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionFa', 'text-danger')}" id="descriptionFa" name="descriptionFa" rows="7" disabled>${painting?.descriptionFa}</textarea>
                         </g:if>
                         <g:else>
-                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionFa', 'text-danger')}" id="descriptionFa" name="descriptionFa" rows="7" required="">${painting?.descriptionFa}</textarea>
+                            <textarea class="form-control ${hasErrors(bean: painting, field: 'descriptionFa', 'text-danger')}" id="descriptionFa" name="descriptionFa" rows="7" >${painting?.descriptionFa}</textarea>
                         </g:else>
                     </div>
                 </div>
@@ -153,10 +187,10 @@
             <div class="col-6">
                 <div class="input-group input-group-outline mb-1">
                     <g:if test="${actionName == 'show'}">
-                        <g:textField class="form-control" id="height" name="height" value="${painting?.height}" required="" disabled="true" />
+                        <g:textField class="form-control" id="height" name="height" value="${painting?.height}"  disabled="true" />
                     </g:if>
                     <g:else>
-                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'height', 'text-danger')}" id="height" name="height" value="${painting?.height}" required=""  />
+                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'height', 'text-danger')}" id="height" name="height" value="${painting?.height}"   />
                     </g:else>
                 </div>
             </div>
@@ -168,10 +202,10 @@
             <div class="col-4">
                 <div class="input-group input-group-outline mb-1">
                     <g:if test="${actionName == 'show'}">
-                        <g:textField class="form-control" id="width" name="width" value="${painting?.width}" required="" disabled="true" />
+                        <g:textField class="form-control" id="width" name="width" value="${painting?.width}"  disabled="true" />
                     </g:if>
                     <g:else>
-                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'width', 'text-danger')}" id="width" name="width" value="${painting?.width}" required=""  />
+                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'width', 'text-danger')}" id="width" name="width" value="${painting?.width}"   />
                     </g:else>
                 </div>
             </div>
@@ -183,10 +217,10 @@
             <div class="col-4">
                 <div class="input-group input-group-outline mb-1">
                     <g:if test="${actionName == 'show'}">
-                        <g:textField class="form-control" id="depth" name="depth" value="${painting?.depth}" required="" disabled="true" />
+                        <g:textField class="form-control" id="depth" name="depth" value="${painting?.depth}"  disabled="true" />
                     </g:if>
                     <g:else>
-                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'depth', 'text-danger')}" id="depth" name="depth" value="${painting?.depth}" required=""  />
+                        <g:textField class="form-control ${hasErrors(bean: painting, field: 'depth', 'text-danger')}" id="depth" name="depth" value="${painting?.depth}"   />
                     </g:else>
                 </div>
             </div>
@@ -220,10 +254,10 @@
         <div class="col-8">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:textField class="form-control" id="ort" name="ort" value="${painting?.ort}" required="" disabled="true" />
+                    <g:textField class="form-control" id="ort" name="ort" value="${painting?.ort}"  disabled="true" />
                 </g:if>
                 <g:else>
-                    <g:textField class="form-control ${hasErrors(bean: painting, field: 'ort', 'text-danger')}" id="ort" name="ort" value="${painting?.ort}" required=""  />
+                    <g:textField class="form-control ${hasErrors(bean: painting, field: 'ort', 'text-danger')}" id="ort" name="ort" value="${painting?.ort}"   />
                 </g:else>
             </div>
         </div>
@@ -238,10 +272,10 @@
         <div class="col-8">
             <div class="input-group input-group-outline mb-1">
                 <g:if test="${actionName == 'show'}">
-                    <g:textField class="form-control" id="owner" name="owner" value="${painting?.owner}" required="" disabled="true" />
+                    <g:textField class="form-control" id="owner" name="owner" value="${painting?.owner}"  disabled="true" />
                 </g:if>
                 <g:else>
-                    <g:textField class="form-control ${hasErrors(bean: painting, field: 'owner', 'text-danger')}" id="owner" name="owner" value="${painting?.owner}" required=""  />
+                    <g:textField class="form-control ${hasErrors(bean: painting, field: 'owner', 'text-danger')}" id="owner" name="owner" value="${painting?.owner}"   />
                 </g:else>
             </div>
         </div>
