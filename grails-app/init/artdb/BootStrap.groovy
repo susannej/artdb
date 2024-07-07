@@ -46,6 +46,7 @@ class BootStrap {
                 firstUser.save(flush: true, failOnError: true)
             }
         }
+
         SyParameter.withTransaction {
 
             /* create SyParameter which should exist */
