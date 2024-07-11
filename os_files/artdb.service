@@ -1,0 +1,47 @@
+# Installation:
+# kopiere diese Datei nach /etc/systemd/system/steward.service
+# systemctl daemon-reload
+# systemctl enable steward
+#
+# starten mit:
+# systemctl start steward
+#
+# stoppen mit:
+# systemctl stop steward
+#
+# Status Abfrage:
+# systemctl status steward
+
+[Unit]
+Description=ArtDB WEB-Application
+After=network.target
+
+[Service]
+
+# Configuration
+Environment="JAVA_HOME=/usr/lib/jvm/jdk-11.0.16.1+1"
+# Environment="PATH=/usr/lib/jvm/jdk-11.0.16.1+1/bin:$PATH"
+Environment="JAVA_OPTS=-Djava.awt.headless=true -Xms2048m"
+
+# Lifecycle
+Type=simple
+ExecStart=/usr/lib/jvm/jdk-11.0.16.1+1/bin/java -cp /var/ArtDB/webapp ${JAVA_OPTS} org.springframework.boot.loader.WarLauncher
+SuccessExitStatus=143
+Restart=on-abort
+
+# Logging
+# SyslogIdentifier=steward
+StandardOutput=append:/var/log/steward/steward.log
+StandardError=append:/var/log/steward/steward.log
+
+# Security
+User=artdb
+Group=artdb
+WorkingDirectory=/var/ArtDB
+#LogsDirectory=steward
+#LogsDirectoryMode=750
+ProtectSystem=false
+ReadWritePaths=/var/Verwaltung
+
+[Install]
+WantedBy=multi-user.target
